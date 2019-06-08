@@ -1,0 +1,80 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="style.css">
+		<title>Aria2 Web Client</title>
+	</head>
+	<body>
+		<header>
+			<h1>Aria2 Web Client</h1>
+			<div id="global-status">
+				<p>Version:<span id="aria2-version"></span></p>
+				<p>up:<span id="global-speed-up"></span> down:<span id="global-speed-down"></span></p>
+			</div>
+		</header>
+		<nav>
+			<button class="new-download">新建</button>
+			<button class="downloading">下载中</button>
+			<button class="downloaded">已下载</button>
+			<button class="deleted">已删除</button>
+			<button class="setting">设置</button>
+		</nav>
+		<main>
+			<section class="new-download">
+				<label for="links">download links:</label>
+				<input type="url" name="links">
+				<button>Confirm</button>
+			</section>
+			<section class="downloading">
+				<ol>
+					<li>
+						<table>
+							<tr>
+								<td>
+									<div class='item-name'>下载名</div>
+								</td>
+								<td>
+									<progress max='100' value='30'>30/100</progress>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class='item-file-number'>file number</div>
+								</td>
+								<td>
+									<div class='link-status'>seeders:<span class='seeders'></span>linkers:<span class='linkers'></span></div>
+								</td>
+							</tr>
+						</table>
+					</li>
+					<li>Downloading Item</li>
+				</ol>
+			</section>
+			<section class="downloaded">
+				<ol>
+					<li>First downloaded Item</li>
+					<li>Second downloaded Ttem</li>
+				</ol>
+			</section>
+			<section class="deleted">
+				<ol>
+					<li>First deleted Item</li>
+					<li>Second deleted Ttem</li>
+				</ol>
+			</section>
+			<section class="setting">
+				<label for="server-url">server url:</label>
+				<input type="url" id="server-url" list="historyUrl">
+				<datalist id="historyUrl">
+				</datalist>
+				<button>确认</button>
+			</section>
+		</main>
+		<footer>
+			Writen by Xiaoming
+		</footer>
+	</body>
+	<script src="jsonrpc.js"></script>
+	<script src="aria2.js"></script>
+	<script src="script.js"></script>
+</html>

@@ -1,0 +1,41 @@
+h1 {
+	margin: auto;
+	text-align: center;
+}
+#global-status {
+	margin: auto;
+	text-align: right;
+}
+nav {
+	display: flex;
+	padding: 0;
+}
+nav button {
+	flex: 1;
+}
+main .downloading li table {
+	width: 100%;
+}
+main .downloading table tr td:first-child {
+	width: 70%;
+}
+main .downloading table tr td:last-child {
+	width: 30%;
+}
+main .downloading .left {
+	float: left;
+	width: 70%;
+}
+section.downloading .right {
+	float: right;
+	width: 30%;
+}
+section.new-download,section.downloaded,section.deleted,section.setting {
+	display: none;
+}
+footer {
+	position: absolute;
+	bottom: 0;
+	width: 99%;
+	text-align: center;
+}
