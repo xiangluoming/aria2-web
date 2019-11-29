@@ -4,8 +4,7 @@ function JsonRPC(url){
 	if(protocol === "ws"){
 		this.session = new WebSocket(url);
 	}
-	this.session.onmessage = e => {this.onmessage(e);}
-	this.call = function(method,params){
+	this.call = (method, params) => new Promise(resolve => {
 		let request = {
 			'jsonrpc': '2.0',
 			'id': method,
@@ -13,5 +12,6 @@ function JsonRPC(url){
 			'params': params
 		};
 		this.session.send(JSON.stringify(request));
-	}
+		this.session.onmessage = e => resolve(JSON.parse(e.data).result);
+	});
 }
