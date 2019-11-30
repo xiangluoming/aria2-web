@@ -54,7 +54,6 @@ document.querySelector('section.setting button').onclick = function(){
 	aria2 = new Aria2(serverUrl);
 }
 function updateDownloading(result){
-	console.log(result);
 	for(let item of result){
 		let itemName = item.bittorrent.info.name;
 		let itemNode = document.createElement('li');

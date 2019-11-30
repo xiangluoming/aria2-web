@@ -1,17 +1,23 @@
 function JsonRPC(url){
 	this.url = url;
 	let protocol = url.slice(0,url.indexOf(':'));
-	if(protocol === "ws"){
-		this.session = new WebSocket(url);
+	this.session = new WebSocket(url);
+	let requestID = 0;
+	this.requests = {};
+	this.session.onmessage = e => {
+		let response = JSON.parse(e.data);
+		this.requests[response.id](response.result);
+		delete this.requests[response.id];
 	}
 	this.call = (method, params) => new Promise(resolve => {
 		let request = {
 			'jsonrpc': '2.0',
-			'id': method,
+			'id':requestID,
 			'method': method,
 			'params': params
 		};
 		this.session.send(JSON.stringify(request));
-		this.session.onmessage = e => resolve(JSON.parse(e.data).result);
+		this.requests[requestID] = resolve;
+		++requestID;
 	});
 }
